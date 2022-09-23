@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'avaliador',
     loadChildren: () => import('./avaliador/avaliador.module').then( m => m.AvaliadorPageModule)
   },
+  {
+    path: 'artigo',
+    loadChildren: () => import('./artigo/artigo.module').then( m => m.ArtigoPageModule)
+  },
 ];
 
 @NgModule({

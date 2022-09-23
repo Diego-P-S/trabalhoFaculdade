@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>artigo</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Titulo</ion-label>
+        <ion-input name="titulo" [(ngModel)]="titulo" placeholder="Insira Titulo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nome dos autores</ion-label>
+        <ion-input name="nomeAutores" [(ngModel)]="nomeAutores" placeholder="Insira Autores"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Palavra Chave</ion-label>
+        <ion-input name="palavraChave" [(ngModel)]="palavraChave" placeholder="Palavra Chave"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-grid><br>
+          <ion-label>Escolha uma data</ion-label>
+          <ion-datetime-button datetime="datetime" name="data"></ion-datetime-button>
+        </ion-grid>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+     <!-- <ion-item v-for="avaliador of avaliadores" :key="avaliador.id">
+        <ion-label>{{ avaliador.id }}</ion-label> 
+      </ion-item>-->
+      <ion-button expand="block" type="submit" (click)="criarArtigo()">Criar Artigo</ion-button>
+    </ion-list>
+  </form>
+</ion-content>
