@@ -8,5 +8,19 @@
 </ion-header>
 
 <ion-content>
+  <ion-list >
+  <ion-item-sliding *ngFor="let artigo of artigos">
+    <ion-item >
+      <ion-label >{{artigo.id}} - {{artigo.titulo}}</ion-label>
 
+    </ion-item>
+
+    <ion-item-options> 
+      <ion-item-option (click)="aceitar(artigo.id)">Aceito</ion-item-option>
+      <ion-item-option color="danger" (click)="recusar(artigo.id)">Recusado</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+  </ion-list>
+  <ion-label color="{{mensagemCor}}">{{mensagem}}</ion-label>
 </ion-content>
+

@@ -11,15 +11,15 @@ import { ProviderService } from '../service/provider.service';
   styleUrls: ['./editor.page.scss'],
 })
 export class EditorPage implements OnInit {
-  artigos: [];
+  artigos: any[];
   usrLogado: any;
 
 
   constructor(private router: Router, private services: ProviderService) {
 
-    this.getArtigos();
     this.usrLogado = this.services.logado;
-    console.log(this.services.logado);
+    this.getArtigos(this.usrLogado.id);
+    console.log(this.usrLogado);
 
   }
 
@@ -35,12 +35,24 @@ export class EditorPage implements OnInit {
 
   }
 
-  async getArtigos() {
+  async getArtigos(id: number) {
     const { value } = await Preferences.get({ key: 'artigos' });
-    console.log(value);
-    this.artigos = JSON.parse(value)
+
+    
+    let aTemp = JSON.parse(value);
+    let aArtigosEditor = [];
+    aTemp.forEach(function (oArtigo) {
+
+      if (oArtigo.idEditor == id) {
+        aArtigosEditor.push(oArtigo);
+      }
+
+    });
+
+    this.artigos = aArtigosEditor;
     console.log(this.artigos);
   }
+
 
 
 
